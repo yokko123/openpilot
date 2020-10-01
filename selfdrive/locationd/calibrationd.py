@@ -65,7 +65,7 @@ class Calibrator():
     calibration_params = params.get("CalibrationParams")
 
     rpy_init = RPY_INIT
-    valid_blocks = 0
+    valid_blocks = 20
 
     cached_params = params.get("CarParamsCache")
     if cached_params is not None:
@@ -74,6 +74,7 @@ class Calibrator():
       if cached_params.carFingerprint != CP.carFingerprint:
         calibration_params = None
 
+    """
     if param_put and calibration_params:
       try:
         msg = log.Event.from_bytes(calibration_params)
@@ -86,6 +87,7 @@ class Calibrator():
         valid_blocks = calibration_params['valid_blocks']
       except Exception:
         cloudlog.exception("CalibrationParams file found but error encountered")
+    """
 
     self.reset(rpy_init, valid_blocks)
     self.update_status()
