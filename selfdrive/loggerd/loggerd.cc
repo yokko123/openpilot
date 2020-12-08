@@ -241,7 +241,7 @@ void encoder_thread(RotateState *rotate_state, bool raw_clips, int cam_idx) {
   LoggerHandle *lh = NULL;
 
   while (!do_exit) {
-    VisionIpcClient vipc_client = VisionIpcClient("camerad", cameras_logged[cam_idx].stream_type, false);
+    VisionIpcClient vipc_client = VisionIpcClient("camerad", cameras_logged[cam_idx].stream_type, false, false);
     VisionBuf buf_info = vipc_client.buffers[0];
 
     if (!encoder_inited) {
